@@ -1,0 +1,63 @@
+components:
+- components:
+  - data_bindings: []
+    layout_properties: {grid_position: 'EDXSHQ,VHTSRF RHRBQJ,XEXOBT'}
+    name: label_2
+    properties: {bold: true, font_size: 23, text: Category}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''item_card'']', property: tag, writeback: false}
+    layout_properties: {grid_position: 'EDXSHQ,VHTSRF THSKCJ,FNGMSZ'}
+    name: news_repeating_panel
+    properties: {item_template: item_card}
+    type: RepeatingPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+- data_bindings: []
+  layout_properties: {slot: title}
+  name: label_1
+  properties: {bold: true, font_size: 50, icon: '', text: NewsEase}
+  type: Label
+- components:
+  - layout_properties: {}
+    name: label_3
+    properties: {text: ' News'}
+    type: Label
+  - layout_properties: {}
+    name: label_4
+    properties: {text: Sports}
+    type: Label
+  - layout_properties: {}
+    name: label_4_copy
+    properties: {text: Business}
+    type: Label
+  - layout_properties: {}
+    name: label_4_copy_copy
+    properties: {text: Innovation}
+    type: Label
+  - layout_properties: {}
+    name: label_4_copy_copy_copy
+    properties: {text: Culture}
+    type: Label
+  - layout_properties: {}
+    name: label_4_copy_copy_copy_copy
+    properties: {text: Travel}
+    type: Label
+  - layout_properties: {}
+    name: label_4_copy_copy_copy_copy_copy
+    properties: {text: Earth}
+    type: Label
+  layout_properties: {slot: left-nav}
+  name: linear_panel_1
+  properties: {}
+  type: LinearPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true
