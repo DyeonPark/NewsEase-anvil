@@ -10,4 +10,5 @@ unique_ids:
     item_card: '1725077116356216274192863.68842'
   modules: {}
   scripts: {}
-  server_modules: {}
+  server_modules:
+    ServerModule1: '1725540729659464850270409.731'

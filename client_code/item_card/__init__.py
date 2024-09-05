@@ -1,5 +1,6 @@
 from ._anvil_designer import item_cardTemplate
 from anvil import *
+import anvil.server
 
 
 class item_card(item_cardTemplate):

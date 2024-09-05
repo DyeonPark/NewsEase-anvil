@@ -1,5 +1,6 @@
 from ._anvil_designer import ArticlesTemplate
 from anvil import *
+import anvil.server
 
 
 class Articles(ArticlesTemplate):

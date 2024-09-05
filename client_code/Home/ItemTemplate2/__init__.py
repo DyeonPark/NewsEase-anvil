@@ -1,5 +1,6 @@
 from ._anvil_designer import ItemTemplate2Template
 from anvil import *
+import anvil.server
 
 
 class ItemTemplate2(ItemTemplate2Template):
