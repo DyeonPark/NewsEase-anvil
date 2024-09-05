@@ -23,11 +23,25 @@ import anvil.server
 # def get_test_connection():
 #   return {"status": "Success", "message": "return-from-get"}
 
-@anvil.server.route('/add/:a/:b')
-def add_numbers(a, b):
-  a = int(a)
-  b = int(b)
-  return {
-    'originals': [a, b],
-    'sum': a + b,
-  }
+@anvil.server.http_endpoint('/test_connection')
+def add_numbers():
+  return {"status": "Success", "message": "return-from-get"}
+
+@anvil.server.http_endpoint("/add_article", methods=["POST"])
+def add_article_api(title: str, content: str, date: str):
+  from datetime import datetime
+  try:
+    date_obj = datetime.strptime(date, "%Y-%m%-d")
+
+    app_tables.articles
+  except Exception as e:
+    return {"status": "error", "message": str(e)}    
+  
+# @anvil.server.route('/add/:a/:b')
+# def add_numbers(a, b):
+#   a = int(a)
+#   b = int(b)
+#   return {
+#     'originals': [a, b],
+#     'sum': a + b,
+#   }
