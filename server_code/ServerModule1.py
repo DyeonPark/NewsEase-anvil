@@ -9,6 +9,19 @@ def get_articles():
   return app_tables.article_tb.search()
 
 
+@anvil.server.callable
+def get_article_by_id(article_id):
+  article = app_tables.article_tb.get(id=article_id)
+
+  if article:
+    return {
+      "title": article["title"],
+      "content": article["article"],
+      "date": article["date"]
+    }
+  else:
+    return None
+
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
 def add_article_api():
   from datetime import datetime
