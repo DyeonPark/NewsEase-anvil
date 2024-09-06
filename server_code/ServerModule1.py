@@ -3,45 +3,36 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
-#https://mellow-blond-external.anvil.app/_/api/test_connection
-# @anvil.server.callable
-# def get_articles():
-#   return app_
 
-# @anvil.server.http_endpoint("test_connection", methods=["POST"])
-# def get_test_connection():
-#   return {"status": "Success", "message": "return-from-get"}
+@anvil.server.callable
+def get_articles():
+  return app_tables.article_tb.search()
 
-@anvil.server.http_endpoint('/test_connection')
-def add_numbers():
-  return {"status": "Success", "message": "return-from-get"}
 
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
-def add_article_api(title: str, content: str, date: str):
+def add_article_api():
   from datetime import datetime
   try:
-    date_obj = datetime.strptime(date, "%Y-%m%-d")
+    data = anvil.server.request.body_json
 
-    app_tables.articles
+    title_id = data.get("title_id")
+    title = data.get("title")
+    date_str = data.get("date")
+    level = data.get("level")
+    article = data.get("article")
+    
+    date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
+
+    app_tables.article_tb.add_row(
+      title_id=title_id,
+      title=title,
+      date=date_obj,
+      level=level,
+      article=article
+    )
+    
+    return {"status": "success", "message": "Article added successfully!"}
+    
   except Exception as e:
     return {"status": "error", "message": str(e)}    
   
-# @anvil.server.route('/add/:a/:b')
-# def add_numbers(a, b):
-#   a = int(a)
-#   b = int(b)
-#   return {
-#     'originals': [a, b],
-#     'sum': a + b,
-#   }

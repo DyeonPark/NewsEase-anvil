@@ -11,4 +11,8 @@ class Home(HomeTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
+    # Load datas from server
+    articles = anvil.server.call('get_articles')
+
+    # Put data to repeating panel
+    self.news_repeating_panel.items = articles

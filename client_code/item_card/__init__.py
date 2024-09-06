@@ -12,3 +12,5 @@ class item_card(item_cardTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    self.cd_title.content = self.item["title"]
+    self.cd_txt.content = self.item["article"]
