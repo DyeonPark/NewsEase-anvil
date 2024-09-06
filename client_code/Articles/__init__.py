@@ -7,8 +7,11 @@ import anvil.server
 
 
 class Articles(ArticlesTemplate):
-  def __init__(self, **properties):
+  def __init__(self, article_id, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
+    self.load_article_details(article_id)
+
+  def load_article_details(self, article_id):
+    article_data = anvil.server.call("get_", article_id)
