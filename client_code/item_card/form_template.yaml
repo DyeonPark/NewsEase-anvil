@@ -16,5 +16,9 @@ components:
   name: outlined_card_1
   properties: {role: outlined-card}
   type: ColumnPanel
-container: {type: ColumnPanel}
+container:
+  data_bindings:
+  - {code: 'self.item['''']', property: item, writeback: false}
+  event_bindings: {show: form_show}
+  type: ColumnPanel
 is_package: true
