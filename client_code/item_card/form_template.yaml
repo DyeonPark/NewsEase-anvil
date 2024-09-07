@@ -5,11 +5,15 @@ components:
       name: card_img
       properties: {}
       type: Image
-    - layout_properties: {grid_position: 'CFBRLE,IVAHGQ ACGEJT,OAYYLU'}
+    - data_bindings:
+      - {code: 'self.item[''title'']', property: data}
+      layout_properties: {grid_position: 'CFBRLE,IVAHGQ ACGEJT,OAYYLU'}
       name: cd_title
-      properties: {align: left, content: cd_title}
+      properties: {align: left, background: '', border: '', content: cd_title, data: null, enable_slots: true, font: '', font_size: null, foreground: '', format: plain_text, margin: null, role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
       type: RichText
-    - layout_properties: {grid_position: 'CFBRLE,IVAHGQ QWALOS,RHGACV'}
+    - data_bindings:
+      - {code: 'self.item[''article'']', property: data}
+      layout_properties: {grid_position: 'CFBRLE,IVAHGQ QWALOS,RHGACV'}
       name: cd_txt
       properties: {content: cd_txt}
       type: RichText
@@ -17,14 +21,15 @@ components:
     name: outlined_card_1
     properties: {role: outlined-card}
     type: ColumnPanel
+  data_bindings: []
   event_bindings: {click: cd_link_click}
   layout_properties: {grid_position: 'OOJTLE,VOVFHF'}
   name: cd_link
-  properties: {}
+  properties: {text: 'self.item["item"]'}
   type: Link
 container:
   data_bindings:
-  - {code: 'self.item['''']', property: item, writeback: false}
+  - {code: 'self.item['''']', property: item}
   event_bindings: {show: form_show}
   type: ColumnPanel
 is_package: true
