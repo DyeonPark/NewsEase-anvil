@@ -10,16 +10,17 @@ def get_articles():
 
 
 @anvil.server.callable
-def get_article_by_id(article_id):
-  article = app_tables.article_tb.get(id=article_id)
+def get_article_by_id(title_id):
+  article_row = app_tables.article_tb.get(title_id=title_id)
 
-  if article:
+  if article_row:
     return {
-      "title": article["title"],
-      "content": article["article"],
-      "date": article["date"]
+      "title": article_row["title"],
+      "article": article_row["article"],
+      "date": article_row["date"]
     }
   else:
+    alert("Can't find article row")
     return None
 
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
