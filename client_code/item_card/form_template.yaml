@@ -17,8 +17,9 @@ components:
     name: outlined_card_1
     properties: {role: outlined-card}
     type: ColumnPanel
+  event_bindings: {click: cd_link_click}
   layout_properties: {grid_position: 'OOJTLE,VOVFHF'}
-  name: link_1
+  name: cd_link
   properties: {}
   type: Link
 container:
