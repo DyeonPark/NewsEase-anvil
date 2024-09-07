@@ -5,17 +5,15 @@ components:
       name: card_img
       properties: {}
       type: Image
-    - data_bindings:
-      - {code: 'self.item[''title'']', property: data}
+    - data_bindings: []
       layout_properties: {grid_position: 'CFBRLE,IVAHGQ ACGEJT,OAYYLU'}
       name: cd_title
       properties: {align: left, background: '', border: '', content: cd_title, data: null, enable_slots: true, font: '', font_size: null, foreground: '', format: plain_text, margin: null, role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
       type: RichText
-    - data_bindings:
-      - {code: 'self.item[''article'']', property: data}
+    - data_bindings: []
       layout_properties: {grid_position: 'CFBRLE,IVAHGQ QWALOS,RHGACV'}
       name: cd_txt
-      properties: {content: cd_txt}
+      properties: {align: left, background: '', border: '', content: cd_txt, data: null, enable_slots: true, font: '', font_size: null, foreground: '', format: plain_text, margin: null, role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
       type: RichText
     layout_properties: {grid_position: 'KBSAPD,IUPEWT'}
     name: outlined_card_1
@@ -25,7 +23,7 @@ components:
   event_bindings: {click: cd_link_click}
   layout_properties: {grid_position: 'OOJTLE,VOVFHF'}
   name: cd_link
-  properties: {text: 'self.item["item"]'}
+  properties: {text: '', visible: true}
   type: Link
 container:
   data_bindings:
