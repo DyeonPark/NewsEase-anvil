@@ -13,32 +13,50 @@ components:
     properties: {bold: false, font_size: 20, text: Choose your level}
     type: Label
   - components:
-    - layout_properties: {full_width_row: false, grid_position: 'GAFPVM,OZKYFP'}
-      name: level1_label
-      properties: {align: center, bold: true, font_size: 15, spacing_above: none, spacing_below: none, text: Elementary}
-      type: Label
+    - components:
+      - layout_properties: {full_width_row: false, grid_position: 'GAFPVM,OZKYFP'}
+        name: level1_label
+        properties: {align: center, bold: true, font_size: 15, spacing_above: none, spacing_below: none, text: Elementary}
+        type: Label
+      layout_properties: {grid_position: 'YXGIQB,UVVCPJ'}
+      name: level1
+      properties: {role: outlined-card}
+      type: ColumnPanel
+    event_bindings: {click: link_1_click}
     layout_properties: {grid_position: 'KDDRZG,EEFEFG'}
-    name: level1
-    properties: {role: outlined-card}
-    type: ColumnPanel
+    name: link_1
+    properties: {}
+    type: Link
   - components:
-    - layout_properties: {grid_position: 'RTVFFV,GLJPVS'}
-      name: level2_label
-      properties: {align: center, bold: true, font_size: 15, spacing_above: none, spacing_below: none, text: Middle/High}
-      type: Label
+    - components:
+      - layout_properties: {grid_position: 'RTVFFV,GLJPVS'}
+        name: level2_label
+        properties: {align: center, bold: true, font_size: 15, spacing_above: none, spacing_below: none, text: Middle/High}
+        type: Label
+      layout_properties: {grid_position: 'NTCSWR,MXTEWK'}
+      name: level2
+      properties: {role: outlined-card}
+      type: ColumnPanel
+    event_bindings: {click: link_2_click}
     layout_properties: {grid_position: 'KDDRZG,NLWKFA'}
-    name: level2
-    properties: {role: outlined-card}
-    type: ColumnPanel
+    name: link_2
+    properties: {}
+    type: Link
   - components:
-    - layout_properties: {grid_position: 'VXSCLN,QOWNZA'}
-      name: level3_label
-      properties: {align: center, bold: true, font_size: 15, italic: false, spacing_above: none, spacing_below: none, text: University}
-      type: Label
+    - components:
+      - layout_properties: {grid_position: 'VXSCLN,QOWNZA'}
+        name: level3_label
+        properties: {align: center, bold: true, font_size: 15, italic: false, spacing_above: none, spacing_below: none, text: University}
+        type: Label
+      layout_properties: {grid_position: 'AYTODS,QXOMZD'}
+      name: level3
+      properties: {role: outlined-card}
+      type: ColumnPanel
+    event_bindings: {click: link_3_click}
     layout_properties: {grid_position: 'KDDRZG,OVAMHT'}
-    name: level3
-    properties: {role: outlined-card}
-    type: ColumnPanel
+    name: link_3
+    properties: {}
+    type: Link
   - layout_properties: {grid_position: 'MCAYSJ,SUFGHL'}
     name: context_intro
     properties: {bold: false, font_size: 20, text: Read articles with each levels}

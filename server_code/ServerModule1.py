@@ -11,17 +11,24 @@ def get_articles():
 
 @anvil.server.callable
 def get_article_by_id(title_id):
-  article_row = app_tables.article_tb.get(title_id=title_id)
+  article_row = list(app_tables.article_tb.search(title_id=title_id, level=1))
 
   if article_row:
     return {
-      "title": article_row["title"],
-      "article": article_row["article"],
-      "date": article_row["date"]
+      "title": article_row[0]["title"],
+      "article": article_row[0]["article"],
+      "date": article_row[0]["date"]
     }
-  else:
-    alert("Can't find article row")
-    return None
+  return "조건에 맞는 데이터를 찾을 수 없습니다"
+
+
+@anvil.server.callable
+def get_article_by_title_n_level(title_id, level):
+  article_row = list(app_tables.article_tb.search(title_id=title_id, level=level))
+  if article_row:
+    return article_row[0]["article"]
+  return "조건에 맞는 데이터를 찾을 수 없습니다"
+
 
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
 def add_article_api():

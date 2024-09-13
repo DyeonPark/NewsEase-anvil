@@ -6,18 +6,24 @@ db_schema:
     - admin_ui: {order: 1, width: 200}
       name: date
       type: date
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {order: 1.125, width: 200}
       name: title
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {order: 1.1875, width: 200}
       name: level
       type: number
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {order: 1.25, width: 200}
       name: article
       type: string
     - admin_ui: {order: 0.5, width: 200}
       name: title_id
       type: number
+    - admin_ui: {order: 1.5, width: 200}
+      name: tts_audio
+      type: media
+    - admin_ui: {order: 1.15625, width: 200}
+      name: article_img
+      type: media
     server: full
     title: article_tb
 dependencies: []
