@@ -17,7 +17,8 @@ def get_article_by_id(title_id):
     return {
       "title": article_row[0]["title"],
       "article": article_row[0]["article"],
-      "date": article_row[0]["date"]
+      "date": article_row[0]["date"],
+      "img_url": article_row[0]["img_url"]
     }
   return "조건에 맞는 데이터를 찾을 수 없습니다"
 
@@ -26,7 +27,10 @@ def get_article_by_id(title_id):
 def get_article_by_title_n_level(title_id, level):
   article_row = list(app_tables.article_tb.search(title_id=title_id, level=level))
   if article_row:
-    return article_row[0]["article"]
+    return {
+      "article": article_row[0]["article"],
+      "img_url": article_row[0]["img_url"],
+    }
   return "조건에 맞는 데이터를 찾을 수 없습니다"
 
 
