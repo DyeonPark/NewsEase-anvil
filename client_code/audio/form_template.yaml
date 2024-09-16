@@ -1,0 +1,12 @@
+components: []
+container:
+  properties:
+    html: |-
+      <center style="font-style:italic; color:#888; margin: 3em;">
+        <audio id="audio_player" controls>
+          Your browser does not support the audio element.
+        </audio>
+      </center>
+      <div anvil-slot="default"></div>
+  type: HtmlTemplate
+is_package: true

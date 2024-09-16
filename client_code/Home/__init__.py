@@ -12,7 +12,7 @@ class Home(HomeTemplate):
     self.init_components(**properties)
 
     # Load datas from server
-    articles = anvil.server.call('get_articles')
+    articles = anvil.server.call('get_articles_list')
 
     # Put data to repeating panel
     self.news_repeating_panel.items = articles

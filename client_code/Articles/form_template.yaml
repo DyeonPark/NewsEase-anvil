@@ -61,10 +61,10 @@ components:
     name: context_intro
     properties: {bold: false, font_size: 20, text: Read articles with each levels}
     type: Label
-  - layout_properties: {grid_position: 'FGWMCU,YLBEKI'}
-    name: label_1
+  - layout_properties: {grid_position: 'YJTSLJ,GADREN'}
+    name: audio_player
     properties: {}
-    type: Label
+    type: form:audio
   - layout_properties: {grid_position: 'DRPNEK,HFFOJR'}
     name: article_context
     properties: {bold: false, font_size: 15, text: ''}
@@ -83,7 +83,7 @@ components:
   type: FlowPanel
 - data_bindings: []
   layout_properties: {slot: title}
-  name: label_1_copy
+  name: newsease_title
   properties: {bold: true, font_size: 50, icon: '', text: NewsEase}
   type: Label
 container:

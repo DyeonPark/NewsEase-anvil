@@ -5,8 +5,8 @@ import anvil.server
 
 
 @anvil.server.callable
-def get_articles():
-  return app_tables.article_tb.search()
+def get_articles_list():
+  return app_tables.article_tb.search(level=1)
 
 
 @anvil.server.callable
