@@ -18,7 +18,8 @@ def get_article_by_id(title_id):
       "title": article_row[0]["title"],
       "article": article_row[0]["article"],
       "date": article_row[0]["date"],
-      "img_url": article_row[0]["img_url"]
+      "img_url": article_row[0]["img_url"],
+      "tts_audio": article_row[0]["tts_audio"]
     }
   return "조건에 맞는 데이터를 찾을 수 없습니다"
 
@@ -30,6 +31,7 @@ def get_article_by_title_n_level(title_id, level):
     return {
       "article": article_row[0]["article"],
       "img_url": article_row[0]["img_url"],
+      "tts_audio": article_row[0]["tts_audio"]
     }
   return "조건에 맞는 데이터를 찾을 수 없습니다"
 

@@ -1,12 +1,20 @@
 components: []
 container:
+  data_bindings: []
   properties:
-    html: |-
-      <center style="font-style:italic; color:#888; margin: 3em;">
-        <audio id="audio_player" controls>
-          Your browser does not support the audio element.
-        </audio>
-      </center>
-      <div anvil-slot="default"></div>
+    html: |
+      <div anvil-slot="default">
+        <center style="font-style:italic; color:#888; margin: 3em;">
+          <audio id="audio_player" name="audio_player" src="" controls autoplay>
+            Your browser does not support the audio element.
+          </audio>
+        </center>
+
+        <script>
+          function setAudioSource(url) {
+            document.getElementById('audio_player').src = url;
+          }
+        </script>
+      </div>
   type: HtmlTemplate
 is_package: true
