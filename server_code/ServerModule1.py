@@ -19,7 +19,8 @@ def get_article_by_id(title_id):
       "article": article_row[0]["article"],
       "date": article_row[0]["date"],
       "img_url": article_row[0]["img_url"],
-      "tts_audio": article_row[0]["tts_audio"]
+      "tts_audio": article_row[0]["tts_audio"],
+      "origin_url": article_row[0]["origin_url"]
     }
   return "조건에 맞는 데이터를 찾을 수 없습니다"
 

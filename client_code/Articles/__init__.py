@@ -7,13 +7,14 @@ import anvil.server
 
 
 class Articles(ArticlesTemplate):
-  def __init__(self, title_id, **properties):
+  def __init__(self, article_data, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # # Load data using article_id
-    self.title_id = title_id
-    self.load_article_details(title_id)
+    #Load data using article_id
+    self.title_id = article_data["title_id"]
+    self.origin_url = article_data["origin_url"]
+    self.load_article_details(self.title_id)
 
   
   def load_article_details(self, title_id):

@@ -25,7 +25,7 @@ db_schema:
       name: img_url
       type: string
     - admin_ui: {order: 3.5, width: 200}
-      name: orign_url
+      name: origin_url
       type: string
     server: full
     title: article_tb
