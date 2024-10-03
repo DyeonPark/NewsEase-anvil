@@ -4,18 +4,23 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-
+import anvil.js
 
 class Articles(ArticlesTemplate):
-  def __init__(self, article_data, **properties):
+  def __init__(self, title_id, origin_url, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    #Load data using article_id
-    self.title_id = article_data["title_id"]
-    self.origin_url = article_data["origin_url"]
+    # Set button to open original article url
+    self.origin_url = origin_url
+    self.origin_url_btn.set_event_handler('click', self.open_origin_url)
+
+    # Load data using article_id
+    self.title_id = title_id
     self.load_article_details(self.title_id)
 
+  def open_origin_url(self, **event_args):
+    anvil.js.window.open(self.origin_url, "_blank")  # 새 탭으로 링크 열기
   
   def load_article_details(self, title_id):
     article_data = anvil.server.call("get_article_by_id", title_id)

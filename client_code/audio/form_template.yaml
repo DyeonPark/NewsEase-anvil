@@ -5,7 +5,7 @@ container:
     html: |
       <div anvil-slot="default">
         <center style="font-style:italic; color:#888; margin: 3em;">
-          <audio id="audio_player" name="audio_player" src="" controls autoplay>
+          <audio id="audio_player" name="audio_player" src="" controls>
             Your browser does not support the audio element.
           </audio>
         </center>

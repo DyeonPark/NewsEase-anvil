@@ -70,7 +70,7 @@ components:
     properties: {bold: false, font_size: 15, text: ''}
     type: Label
   - layout_properties: {grid_position: 'KKOMRK,WCZOWX'}
-    name: outlined_button_3
+    name: origin_url_btn
     properties: {role: outlined-button, text: Go to Original Article}
     type: Button
   layout_properties: {slot: default}

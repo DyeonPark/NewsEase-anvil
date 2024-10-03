@@ -14,10 +14,9 @@ class item_card(item_cardTemplate):
     # Any code you write here will run before the form opens.
     self.cd_title.content = self.item["title"]
     self.cd_txt.content = self.item["article"]
-
     self.cd_link.set_event_handler('click', self.card_click)
 
   def card_click(self, **event_args):
-    article_data = self.item["title_id"]
-    self.item["t"]
-    open_form("Articles", article_data=article_data)
+    title_id = self.item["title_id"]
+    origin_url = self.item["origin_url"]
+    open_form("Articles", title_id=title_id, origin_url=origin_url)
