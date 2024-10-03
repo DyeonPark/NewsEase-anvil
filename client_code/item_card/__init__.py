@@ -18,5 +18,6 @@ class item_card(item_cardTemplate):
     self.cd_link.set_event_handler('click', self.card_click)
 
   def card_click(self, **event_args):
-    article_data = self.item
+    article_data = self.item["title_id"]
+    self.item["t"]
     open_form("Articles", article_data=article_data)
