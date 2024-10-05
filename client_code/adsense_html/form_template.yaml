@@ -1,11 +1,6 @@
 components: []
 container:
   properties:
-    html: |-
-      <center style="font-style:italic; color:#888; margin: 3em;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1603235638591515"
-           crossorigin="anonymous"></script>
-      </center>
-      <div anvil-slot="default"></div>
+    html: "<center style=\"font-style:italic; color:#888; margin: 2em;\">\n</center>\n\n<div anvil-slot=\"default\" align=\"center\">\n  \n  <script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1603235638591515\"\n     crossorigin=\"anonymous\"></script>\n  <!-- Newsease-ad -->\n  <ins class=\"adsbygoogle\"\n      style=\"display:block\"\n      data-ad-client=\"ca-pub-1603235638591515\"\n      data-ad-slot=\"5190216760\"\n      data-ad-format=\"auto\"\n      data-full-width-responsive=\"true\"></ins>\n  <script>\n    (adsbygoogle = window.adsbygoogle || []).push({});\n  </script>\n  \n</div>"
   type: HtmlTemplate
 is_package: true

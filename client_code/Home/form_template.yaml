@@ -1,10 +1,14 @@
 components:
 - components:
   - data_bindings: []
-    layout_properties: {grid_position: 'EDXSHQ,VHTSRF RHRBQJ,XEXOBT'}
+    layout_properties: {grid_position: 'RHRBQJ,XEXOBT'}
     name: label_2
     properties: {bold: true, font_size: 23, text: Category}
     type: Label
+  - layout_properties: {grid_position: 'LKOUVW,IZTKRS'}
+    name: adsense_html_1
+    properties: {}
+    type: form:adsense_html
   - data_bindings:
     - {code: 'self.item[''item_card'']', property: tag, writeback: false}
     layout_properties: {grid_position: 'EDXSHQ,VHTSRF THSKCJ,FNGMSZ'}
