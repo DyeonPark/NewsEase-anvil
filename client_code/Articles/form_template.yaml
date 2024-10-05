@@ -8,6 +8,10 @@ components:
     name: article_title
     properties: {bold: true, font_size: 25, text: News Title}
     type: Label
+  - layout_properties: {grid_position: 'ODRICA,IVSUYB'}
+    name: adsense_html_1
+    properties: {}
+    type: form:adsense_html
   - layout_properties: {grid_position: 'MKHNKL,WYFJNV'}
     name: level_intro
     properties: {bold: false, font_size: 20, text: Choose your level}
