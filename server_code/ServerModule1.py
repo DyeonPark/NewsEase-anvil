@@ -70,3 +70,8 @@ def add_article_api():
   except Exception as e:
     return {"status": "error", "message": str(e)}    
   
+@anvil.server.http_endpoint("/max_id", methods=['GET'])
+def get_max_id():
+    rows = app_tables.article_tb.search()
+    max_id = max([row['title_id'] for row in rows])
+    return {"max_id": max_id}
