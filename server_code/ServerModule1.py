@@ -2,6 +2,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
+import json
 
 
 @anvil.server.callable
@@ -39,11 +40,18 @@ def get_article_by_title_n_level(title_id, level):
 
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
 def add_article_api():
-  from datetime import datetime
   try:
     data = anvil.server.request.body_json
+    file = anvil.server.request.files.get("file")
+    metadata = anvil.server.request.form.get("metadata")
 
-    title_id = data.get("title_id")
+    if metadata:
+      metadata = json.loads(metadata)
+    else:
+      return {"status": "error", "message": "Missing metadata"}
+
+    title_id = metadata.get("title_id")
+    # title_id = data.get("title_id")
     title = data.get("title")
     date_str = data.get("date")
     level = data.get("level")
@@ -51,8 +59,6 @@ def add_article_api():
     tts_audio = data.get("tts_audio")
     img_url = data.get("img_url")
     origin_url = data.get("origin_url")
-    
-    date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
 
     app_tables.article_tb.add_row(
       title_id = title_id,
