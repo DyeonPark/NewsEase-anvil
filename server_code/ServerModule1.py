@@ -4,6 +4,8 @@ from anvil.tables import app_tables
 import anvil.server
 import json
 
+from datetime import datetime
+
 
 @anvil.server.callable
 def get_articles_list():
@@ -39,36 +41,21 @@ def get_article_by_title_n_level(title_id, level):
 
 
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
-def add_article_api():
+def add_article_api(json_data, tts_audio):
   try:
-    data = anvil.server.request.body_json
-    file = anvil.server.request.files.get("file")
-    metadata = anvil.server.request.form.get("metadata")
-
-    if metadata:
-      metadata = json.loads(metadata)
-    else:
-      return {"status": "error", "message": "Missing metadata"}
-
-    title_id = metadata.get("title_id")
-    # title_id = data.get("title_id")
-    title = data.get("title")
-    date_str = data.get("date")
-    level = data.get("level")
-    article = data.get("article")
-    tts_audio = data.get("tts_audio")
-    img_url = data.get("img_url")
-    origin_url = data.get("origin_url")
+    metadata = json.loads(json_data)
+    date_obj = datetime.fromisoformat(metadata.get("date").date()
 
     app_tables.article_tb.add_row(
-      title_id = title_id,
-      title = title,
-      date = date_obj,
-      level = level,
-      article = article,
-      tts_audio = tts_audio,
-      img_url = img_url,
-      origin_url = origin_url
+      title_id=metadata.get("title_id"),
+      date=date_obj,
+      title=metadata.get("title"),
+      level=metadata.get("level"),
+      article=metadata.get("article"),
+      img_url=metadata.get("img_url"),
+      origin_url=metadata.get("origin_url"),
+      abstract=metadata.get("abstract"),
+      tts_audio=anvil.media.from_file(tts_audio, name=f"tts_audio_{metadata.get("level")}.mp3")
     )
     
     return {"status": "success", "message": "Article added successfully!"}
