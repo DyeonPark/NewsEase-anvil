@@ -41,21 +41,21 @@ def get_article_by_title_n_level(title_id, level):
 
 
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
-def add_article_api(json_data, tts_audio):
+def add_article_api():
   try:
-    metadata = json.loads(json_data)
-    date_obj = datetime.fromisoformat(metadata.get("date").date()
+    metadata = anvil.server.request.body_json
+    # date_obj = datetime.fromisoformat(metadata.get("date").date()
 
     app_tables.article_tb.add_row(
       title_id=metadata.get("title_id"),
-      date=date_obj,
+      # date=date_obj,
       title=metadata.get("title"),
       level=metadata.get("level"),
       article=metadata.get("article"),
       img_url=metadata.get("img_url"),
       origin_url=metadata.get("origin_url"),
       abstract=metadata.get("abstract"),
-      tts_audio=anvil.media.from_file(tts_audio, name=f"tts_audio_{metadata.get("level")}.mp3")
+      # tts_audio=anvil.media.from_file(tts_audio, name=f"tts_audio_{metadata.get("level")}.mp3")
     )
     
     return {"status": "success", "message": "Article added successfully!"}
