@@ -3,7 +3,7 @@ db_schema:
   article_tb:
     client: none
     columns:
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {order: 1, width: 130}
       name: date
       type: date
     - admin_ui: {order: 1.125, width: 200}

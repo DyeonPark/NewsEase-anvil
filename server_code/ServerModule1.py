@@ -43,12 +43,13 @@ def get_article_by_title_n_level(title_id, level):
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
 def add_article_api():
   try:
+    from datetime import datetime
     metadata = anvil.server.request.body_json
     # date_obj = datetime.fromisoformat(metadata.get("date").date()
 
     app_tables.article_tb.add_row(
       title_id=metadata.get("title_id"),
-      # date=date_obj,
+      date=datetime.now().date(),
       title=metadata.get("title"),
       level=metadata.get("level"),
       article=metadata.get("article"),
