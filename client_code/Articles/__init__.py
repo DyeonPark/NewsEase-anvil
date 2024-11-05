@@ -19,8 +19,6 @@ class Articles(ArticlesTemplate):
     self.title_id = title_id
     self.load_article_details(self.title_id)
 
-    self.newsease_title.set_event_handler()
-
   def open_origin_url(self, **event_args):
     anvil.js.window.open(self.origin_url, "_blank")  # 새 탭으로 링크 열기
   

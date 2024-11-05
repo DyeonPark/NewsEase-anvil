@@ -9,7 +9,9 @@ from datetime import datetime
 
 @anvil.server.callable
 def get_articles_list():
-  return app_tables.article_tb.search(level=1)
+  articles = app_tables.article_tb.search(level=1)
+  sorted_articles = sorted(articles, key=lambda x: x["date"], reverse=True)
+  return sorted_articles
 
 
 @anvil.server.callable
