@@ -19,6 +19,8 @@ class Articles(ArticlesTemplate):
     self.title_id = title_id
     self.load_article_details(self.title_id)
 
+    self.newsease_title.set_event_handler()
+
   def open_origin_url(self, **event_args):
     anvil.js.window.open(self.origin_url, "_blank")  # 새 탭으로 링크 열기
   
@@ -53,3 +55,6 @@ class Articles(ArticlesTemplate):
     self.article_context.text = article_data["article"]
     self.title_img.source = article_data["img_url"]
     self.call_js('setAudioSource', article_data["tts_audio"].get_url(True))
+
+  def title_link_click(self, **event_args):
+    open_form('Home')

@@ -23,11 +23,6 @@ components:
   name: navbar_links
   properties: {}
   type: FlowPanel
-- data_bindings: []
-  layout_properties: {slot: title}
-  name: label_1
-  properties: {bold: true, font_size: 50, icon: '', text: NewsEase}
-  type: Label
 - components:
   - layout_properties: {}
     name: label_3
@@ -61,6 +56,12 @@ components:
   name: linear_panel_1
   properties: {}
   type: LinearPanel
+- components: []
+  event_bindings: {click: title_link_click}
+  layout_properties: {slot: title}
+  name: title_link
+  properties: {bold: true, font_size: 50, text: NewsEase}
+  type: Link
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate

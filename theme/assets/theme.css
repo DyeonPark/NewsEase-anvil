@@ -723,6 +723,22 @@ button.close > span, button.close {
   padding: 15px;
 }
 
+.anvil-role-level-button {
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: %color:Surface%;
+  border: solid 1px %color:Outline%;
+  padding: 15px;
+}
+
+.anvil-role-level-button:hover {
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: %color:Primary Container%;
+  border: solid 1px %color:Outline%;
+  padding: 15px;
+}
+
 .anvil-role-elevated-card {
   overflow: hidden;
   border-radius: 12px;

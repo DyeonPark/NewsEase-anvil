@@ -16,3 +16,6 @@ class Home(HomeTemplate):
 
     # Put data to repeating panel
     self.news_repeating_panel.items = articles
+
+  def title_link_click(self, **event_args):
+    open_form('Home')

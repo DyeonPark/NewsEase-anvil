@@ -22,9 +22,10 @@ components:
         name: level1_label
         properties: {align: center, bold: true, font_size: 15, spacing_above: none, spacing_below: none, text: Elementary}
         type: Label
+      data_bindings: []
       layout_properties: {grid_position: 'YXGIQB,UVVCPJ'}
       name: level1
-      properties: {role: outlined-card}
+      properties: {role: level-button}
       type: ColumnPanel
     event_bindings: {click: link_1_click}
     layout_properties: {grid_position: 'KDDRZG,EEFEFG'}
@@ -39,7 +40,7 @@ components:
         type: Label
       layout_properties: {grid_position: 'NTCSWR,MXTEWK'}
       name: level2
-      properties: {role: outlined-card}
+      properties: {role: level-button}
       type: ColumnPanel
     event_bindings: {click: link_2_click}
     layout_properties: {grid_position: 'KDDRZG,NLWKFA'}
@@ -54,7 +55,7 @@ components:
         type: Label
       layout_properties: {grid_position: 'AYTODS,QXOMZD'}
       name: level3
-      properties: {role: outlined-card}
+      properties: {role: level-button}
       type: ColumnPanel
     event_bindings: {click: link_3_click}
     layout_properties: {grid_position: 'KDDRZG,OVAMHT'}
@@ -89,11 +90,11 @@ components:
   name: navbar_links
   properties: {}
   type: FlowPanel
-- data_bindings: []
+- event_bindings: {click: title_link_click}
   layout_properties: {slot: title}
-  name: newsease_title
-  properties: {bold: true, font_size: 50, icon: '', text: NewsEase}
-  type: Label
+  name: title_link
+  properties: {bold: true, font_size: 50, text: NewsEase}
+  type: Link
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
