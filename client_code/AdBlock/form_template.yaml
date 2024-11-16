@@ -1,0 +1,11 @@
+components: []
+container:
+  properties:
+    html: |-
+      <center style="font-style:italic; color:#888; margin: 3em;">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1603235638591515"
+           crossorigin="anonymous"></script>
+      </center>
+      <div anvil-slot="default"></div>
+  type: HtmlTemplate
+is_package: true
