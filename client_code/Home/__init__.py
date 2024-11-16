@@ -13,8 +13,6 @@ class Home(HomeTemplate):
 
     # Load datas from server
     articles = anvil.server.call('get_articles_list')
-
-    self.adsense_html_1.html = "<div></div>"
     
     # Put data to repeating panel
     self.news_repeating_panel.items = articles
