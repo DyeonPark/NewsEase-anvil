@@ -14,7 +14,11 @@ components:
     type: form:AdBlock
   - layout_properties: {grid_position: 'MKHNKL,WYFJNV'}
     name: level_intro
-    properties: {bold: false, font_size: 20, text: Choose your level}
+    properties: {bold: false, font_size: 20, text: 1️⃣ Click your level}
+    type: Label
+  - layout_properties: {grid_position: 'GNDGCZ,ELAYFG'}
+    name: label_1
+    properties: {bold: true, font_size: 15, text: '📍 Click your level, and articles will appear below'}
     type: Label
   - components:
     - components:
@@ -64,15 +68,22 @@ components:
     type: Link
   - layout_properties: {grid_position: 'MCAYSJ,SUFGHL'}
     name: context_intro
-    properties: {bold: false, font_size: 20, text: Read articles with each levels}
+    properties: {bold: false, font_size: 20, text: 2️⃣ Read articles with each levels}
     type: Label
   - layout_properties: {grid_position: 'YJTSLJ,GADREN'}
     name: audio_player
     properties: {}
     type: form:audio
-  - layout_properties: {grid_position: 'VOEOQK,HDMFYD'}
+  - data_bindings: []
+    layout_properties: {grid_position: 'ICONHF,RJNYJB'}
     name: article_context
-    properties: {}
+    properties:
+      background: '#f1f3f4'
+      content: 📋 Articles will appear here!
+      font_size: 17
+      spacing:
+        padding: [11, null, 0, null]
+      spacing_above: small
     type: RichText
   - layout_properties: {grid_position: 'JLHMNI,MVCFFN'}
     name: ad_block_2

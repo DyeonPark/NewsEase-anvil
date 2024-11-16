@@ -18,7 +18,6 @@ class Articles(ArticlesTemplate):
     # Load data using article_id
     self.title_id = title_id
     self.load_article_details(self.title_id)
-    # self.link_1_click()
 
   def open_origin_url(self, **event_args):
     anvil.js.window.open(self.origin_url, "_blank")  # 새 탭으로 링크 열기
@@ -28,7 +27,6 @@ class Articles(ArticlesTemplate):
 
     if article_data:
       self.article_title.text = article_data["title"]
-      self.article_context.content = article_data["article"]
       self.title_img.source = article_data["img_url"]
       self.audio_player.src = article_data["tts_audio"].get_url(True)
     else:
@@ -36,7 +34,10 @@ class Articles(ArticlesTemplate):
 
   
   def link_1_click(self, **event_args):
-    self.level1.background = "darkblue"
+    self.level1.background = "#EADDFF"
+    self.level2.background = "white"
+    self.level3.background = "white"
+    
     article_data = anvil.server.call('get_article_by_title_n_level', title_id=self.title_id, level=1)
     self.article_context.content = article_data["article"]
     self.title_img.source = article_data["img_url"]
@@ -44,6 +45,10 @@ class Articles(ArticlesTemplate):
 
   
   def link_2_click(self, **event_args):
+    self.level1.background = "white"
+    self.level2.background = "#EADDFF"
+    self.level3.background = "white"
+    
     article_data = anvil.server.call('get_article_by_title_n_level', title_id=self.title_id, level=2)
     self.article_context.content = article_data["article"]
     self.title_img.source = article_data["img_url"]
@@ -51,6 +56,10 @@ class Articles(ArticlesTemplate):
 
   
   def link_3_click(self, **event_args):
+    self.level1.background = "white"
+    self.level2.background = "white"
+    self.level3.background = "#EADDFF"
+    
     article_data = anvil.server.call('get_article_by_title_n_level', title_id=self.title_id, level=3)
     self.article_context.content = article_data["article"]
     self.title_img.source = article_data["img_url"]
