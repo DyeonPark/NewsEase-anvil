@@ -70,10 +70,10 @@ components:
     name: audio_player
     properties: {}
     type: form:audio
-  - layout_properties: {grid_position: 'DRPNEK,HFFOJR'}
+  - layout_properties: {grid_position: 'VOEOQK,HDMFYD'}
     name: article_context
-    properties: {bold: false, font_size: 15, text: ''}
-    type: Label
+    properties: {}
+    type: RichText
   - layout_properties: {grid_position: 'JLHMNI,MVCFFN'}
     name: ad_block_2
     properties: {}

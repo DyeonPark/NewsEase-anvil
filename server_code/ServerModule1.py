@@ -8,11 +8,13 @@ from datetime import datetime
 
 
 @anvil.server.callable
-def get_articles_list():
-  articles = app_tables.article_tb.search(level=1)
+def get_articles_list(cate: str = None):
+  if cate:
+    articles = app_tables.article_tb.search(level=1, category=cate)
+  else:
+    articles = app_tables.article_tb.search(level=1)
   sorted_articles = sorted(articles, key=lambda x: x["date"], reverse=True)
   return sorted_articles
-
 
 @anvil.server.callable
 def get_article_by_id(title_id):

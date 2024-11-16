@@ -2,7 +2,7 @@ components:
 - components:
   - data_bindings: []
     layout_properties: {grid_position: 'RHRBQJ,XEXOBT'}
-    name: label_2
+    name: sub_title
     properties: {bold: true, font_size: 23, text: Articles}
     type: Label
   - layout_properties: {grid_position: 'QXPLWI,OPTRVP'}
@@ -21,34 +21,40 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - layout_properties: {}
-    name: label_3
-    properties: {text: ' News'}
-    type: Label
-  - layout_properties: {}
-    name: label_4
+  - event_bindings: {click: news_link_click}
+    layout_properties: {}
+    name: news_link
+    properties: {text: News}
+    type: Link
+  - event_bindings: {click: sports_link_click}
+    layout_properties: {}
+    name: sports_link
     properties: {text: Sports}
-    type: Label
-  - layout_properties: {}
-    name: label_4_copy
+    type: Link
+  - event_bindings: {click: business_link_click}
+    layout_properties: {}
+    name: business_link
     properties: {text: Business}
-    type: Label
-  - layout_properties: {}
-    name: label_4_copy_copy
+    type: Link
+  - event_bindings: {click: innovation_link_click}
+    name: innovation_link
     properties: {text: Innovation}
-    type: Label
-  - layout_properties: {}
-    name: label_4_copy_copy_copy
+    type: Link
+  - event_bindings: {click: culture_link_click}
+    layout_properties: {}
+    name: culture_link
     properties: {text: Culture}
-    type: Label
-  - layout_properties: {}
-    name: label_4_copy_copy_copy_copy
+    type: Link
+  - event_bindings: {click: travel_link_click}
+    layout_properties: {}
+    name: travel_link
     properties: {text: Travel}
-    type: Label
-  - layout_properties: {}
-    name: label_4_copy_copy_copy_copy_copy
+    type: Link
+  - event_bindings: {click: earth_link_click}
+    layout_properties: {}
+    name: earth_link
     properties: {text: Earth}
-    type: Label
+    type: Link
   layout_properties: {slot: left-nav}
   name: linear_panel_1
   properties: {}
@@ -58,6 +64,10 @@ components:
   layout_properties: {slot: title}
   name: title_link
   properties: {bold: true, font_size: 50, text: NewsEase}
+  type: Link
+- layout_properties: {slot: nav-right}
+  name: link_1
+  properties: {}
   type: Link
 container:
   properties: {html: '@theme:standard-page.html'}
