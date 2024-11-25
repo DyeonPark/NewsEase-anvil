@@ -4,13 +4,21 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-
+import anvil.http
 
 class Home(HomeTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
+    # 현재 페이지 경로 및 브라우저 정보를 서버로 전송
+    # user_agent = anvil.http.request.headers.get("User-Agent", "Unknown")
+    # referrer = anvil.http.request.headers.get("Referer", "Direct Access")
+    path = "/main"  # 현재 페이지 경로 (필요에 따라 수정 가능)
+    # session_id = anvil.http.request.cookies.get("anvil-session-id", "unknown-session")
+    
+    anvil.server.call('log_visit', path)
+    
     # Load datas from server
     articles = anvil.server.call('get_articles_list')
     

@@ -93,3 +93,11 @@ def get_max_id():
     rows = app_tables.article_tb.search()
     max_id = max([row['title_id'] for row in rows])
     return {"max_id": max_id}
+
+@anvil.server.callable
+def log_visit(path):
+  app_tables.visitors.add_row(
+    timestamp=datetime.now(),
+    path=path
+  )
+  

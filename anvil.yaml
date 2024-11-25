@@ -35,17 +35,26 @@ db_schema:
       type: string
     server: full
     title: article_tb
-  table_2:
+  visitors:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
-      name: date
-      type: date
     - admin_ui: {order: 1, width: 200}
-      name: visits
-      type: number
+      name: user_agent
+      type: string
+    - admin_ui: {order: 0.5, width: 200}
+      name: timestamp
+      type: datetime
+    - admin_ui: {order: 2, width: 200}
+      name: path
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: referrer
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: session_id
+      type: string
     server: full
-    title: Table 2
+    title: visitors
 dependencies: []
 name: NewsEase
 native_deps:
