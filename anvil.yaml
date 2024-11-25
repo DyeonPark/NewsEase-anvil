@@ -35,6 +35,17 @@ db_schema:
       type: string
     server: full
     title: article_tb
+  table_2:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: date
+      type: date
+    - admin_ui: {order: 1, width: 200}
+      name: visits
+      type: number
+    server: full
+    title: Table 2
 dependencies: []
 name: NewsEase
 native_deps:
