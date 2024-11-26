@@ -1,9 +1,10 @@
 import anvil.tables as tables
 import anvil.tables.query as q
-from anvil.tables import app_tables
+from anvil.tables import app_tables, query
 import anvil.server
-import json
 
+import json
+import pytz
 from datetime import datetime
 
 
@@ -90,14 +91,39 @@ def add_audio_api(title_id, level):
   
 @anvil.server.http_endpoint("/max_id", methods=['GET'])
 def get_max_id():
-    rows = app_tables.article_tb.search()
-    max_id = max([row['title_id'] for row in rows])
-    return {"max_id": max_id}
+  rows = app_tables.article_tb.search()
+  max_id = max([row['title_id'] for row in rows])
+  return {"max_id": max_id}
 
+@anvil.server.http_endpoint("/daily", methods=['GET'])
+def get_daily_visitors(date: str):
+  try:
+    kst = pytz.timezone('Asia/Seoul')
+    
+    target_date = datetime.strptime(date, "%Y%m%d").replace(tzinfo=kst)
+    anvil.server.logger.info(f"date: {date}")
+    anvil.server.logger.info(f"target_date: {target_date}")
+    
+    start_of_day = target_date
+    end_of_day = target_date + timedelta(days=1) - timedelta(seconds=1)
+    anvil.server.logger.info(f"start_of_day: {start_of_day}")
+    anvil.server.logger.info(f"end_of_day: {end_of_day}")
+    
+    rows = app_tables.visitors.search(
+      query.between('timestamp', start_of_day, end_of_day)
+    )
+    anvil.server.logger.info(f"Count rows: {len(list(rows))}")
+    
+    return {"count": len(list(rows)), "logs": list(rows)}
+    return {"state": "correct"}
+  except Exception as e:
+    return {"error": str(e)}
+  
 @anvil.server.callable
 def log_visit(path):
+  utc_now = datetime.now(pytz.utc)
+  kst_now = utc_now.astimezone(pytz.timezone('Asia/Seoul'))
   app_tables.visitors.add_row(
-    timestamp=datetime.now(),
+    timestamp=kst_now,
     path=path
   )
-  
