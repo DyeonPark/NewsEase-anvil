@@ -5,8 +5,7 @@ import anvil.server
 
 import json
 import pytz
-from datetime import datetime
-
+from datetime import datetime, timedelta
 
 @anvil.server.callable
 def get_articles_list(cate: str = None):
@@ -95,27 +94,16 @@ def get_max_id():
   max_id = max([row['title_id'] for row in rows])
   return {"max_id": max_id}
 
-@anvil.server.http_endpoint("/daily", methods=['GET'])
+@anvil.server.http_endpoint("/daily", methods=['POST'])
 def get_daily_visitors(date: str):
   try:
-    kst = pytz.timezone('Asia/Seoul')
-    
-    target_date = datetime.strptime(date, "%Y%m%d").replace(tzinfo=kst)
-    anvil.server.logger.info(f"date: {date}")
-    anvil.server.logger.info(f"target_date: {target_date}")
-    
+    target_date = datetime.strptime(date, "%Y%m%d").date()
     start_of_day = target_date
     end_of_day = target_date + timedelta(days=1) - timedelta(seconds=1)
-    anvil.server.logger.info(f"start_of_day: {start_of_day}")
-    anvil.server.logger.info(f"end_of_day: {end_of_day}")
-    
-    rows = app_tables.visitors.search(
-      query.between('timestamp', start_of_day, end_of_day)
-    )
-    anvil.server.logger.info(f"Count rows: {len(list(rows))}")
-    
-    return {"count": len(list(rows)), "logs": list(rows)}
-    return {"state": "correct"}
+
+    rows = app_tables.visitors.search(timestamp=query.between(start_of_day, end_of_day))
+    formatted_rows = [datetime.strftime(row['timestamp'], '%Y-%m-%d %H:%M:%S') for row in list(rows)]
+    return {"count": len(formatted_rows), "logs": formatted_rows}
   except Exception as e:
     return {"error": str(e)}
   
