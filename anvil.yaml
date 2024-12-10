@@ -56,6 +56,7 @@ db_schema:
     server: full
     title: visitors
 dependencies: []
+metadata: {description: 'Learn English, catch the news trends', logo_img: 'asset:logo.png', title: 'Learn English, catch the news trends'}
 name: NewsEase
 native_deps:
   head_html: "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1603235638591515\"\n     crossorigin=\"anonymous\"></script>\n  "
