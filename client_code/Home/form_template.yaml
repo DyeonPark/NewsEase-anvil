@@ -5,17 +5,12 @@ components:
     name: sub_title
     properties: {bold: true, font_size: 23, text: Articles}
     type: Label
-  - components:
-    - data_bindings:
-      - {code: 'self.item[''item_card'']', property: tag, writeback: false}
-      layout_properties: {grid_position: 'WVZMIT,ZEFSLX'}
-      name: news_repeating_panel
-      properties: {item_template: item_card}
-      type: RepeatingPanel
-    layout_properties: {grid_position: 'QFHDZB,ACNRPF'}
-    name: column_panel_1
-    properties: {}
-    type: ColumnPanel
+  - data_bindings:
+    - {code: 'self.item[''item_card'']', property: tag, writeback: false}
+    layout_properties: {grid_position: 'CSEELO,VBETWD'}
+    name: news_repeating_panel
+    properties: {item_template: item_card}
+    type: RepeatingPanel
   data_bindings: []
   layout_properties: {slot: default}
   name: content_panel
