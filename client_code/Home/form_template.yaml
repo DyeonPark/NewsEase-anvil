@@ -5,16 +5,17 @@ components:
     name: sub_title
     properties: {bold: true, font_size: 23, text: Articles}
     type: Label
-  - layout_properties: {grid_position: 'QXPLWI,OPTRVP'}
-    name: ad_block_1
+  - components:
+    - data_bindings:
+      - {code: 'self.item[''item_card'']', property: tag, writeback: false}
+      layout_properties: {grid_position: 'WVZMIT,ZEFSLX'}
+      name: news_repeating_panel
+      properties: {item_template: item_card}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'QFHDZB,ACNRPF'}
+    name: column_panel_1
     properties: {}
-    type: form:AdBlock
-  - data_bindings:
-    - {code: 'self.item[''item_card'']', property: tag, writeback: false}
-    layout_properties: {grid_position: 'EDXSHQ,VHTSRF THSKCJ,FNGMSZ'}
-    name: news_repeating_panel
-    properties: {item_template: item_card}
-    type: RepeatingPanel
+    type: ColumnPanel
   data_bindings: []
   layout_properties: {slot: default}
   name: content_panel
