@@ -3,13 +3,18 @@ db_schema:
   article_level_tb:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
-      name: title_id
-      target: article_meta_tb
-      type: link_single
     - admin_ui: {order: 1, width: 200}
       name: level
       type: number
+    - admin_ui: {width: 200}
+      name: article
+      type: string
+    - admin_ui: {width: 200}
+      name: title_id
+      type: number
+    - admin_ui: {width: 200}
+      name: tts_audio
+      type: media
     server: full
     title: article_level_tb
   article_meta_tb:
@@ -73,6 +78,9 @@ db_schema:
     - admin_ui: {order: 0, width: 200}
       name: title_id
       type: number
+    - admin_ui: {width: 200}
+      name: word_id
+      type: number
     server: full
     title: article_words
   visitors:
@@ -105,8 +113,11 @@ db_schema:
       name: meaning
       type: string
     - admin_ui: {width: 200}
-      name: synonym
+      name: synonyms
       type: string
+    - admin_ui: {width: 200}
+      name: word_id
+      type: number
     server: full
     title: word_tb
 dependencies: []
