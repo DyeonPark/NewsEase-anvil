@@ -1,5 +1,37 @@
 allow_embedding: false
 db_schema:
+  article_level_tb:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: title_id
+      target: article_meta_tb
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: level
+      type: number
+    server: full
+    title: article_level_tb
+  article_meta_tb:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: title_id
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: title
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: date
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      name: category
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: img_url
+      type: string
+    server: full
+    title: article_meta_tb
   article_tb:
     client: none
     columns:
@@ -35,6 +67,14 @@ db_schema:
       type: string
     server: full
     title: article_tb
+  article_words:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: title_id
+      type: number
+    server: full
+    title: article_words
   visitors:
     client: none
     columns:
