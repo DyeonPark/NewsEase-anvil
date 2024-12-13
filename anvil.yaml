@@ -55,6 +55,20 @@ db_schema:
       type: string
     server: full
     title: visitors
+  word_tb:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: word
+      type: string
+    - admin_ui: {width: 200}
+      name: meaning
+      type: string
+    - admin_ui: {width: 200}
+      name: synonym
+      type: string
+    server: full
+    title: word_tb
 dependencies: []
 metadata: {description: 'Learn English, catch the news trends', logo_img: 'asset:logo.png', title: 'Learn English, catch the news trends'}
 name: NewsEase
