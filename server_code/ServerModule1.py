@@ -104,6 +104,7 @@ def add_article_words_api():
     metadata = anvil.server.request.body_json
     app_tables.article_words.add_row(
       title_id=metadata.get("title_id"),
+      level=metadata.get("level"),
       word_id=metadata.get("word_id"),
     )
 

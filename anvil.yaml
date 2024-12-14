@@ -87,6 +87,9 @@ db_schema:
     - admin_ui: {width: 200}
       name: word_id
       type: number
+    - admin_ui: {order: 0.5, width: 200}
+      name: level
+      type: number
     server: full
     title: article_words
   visitors:
