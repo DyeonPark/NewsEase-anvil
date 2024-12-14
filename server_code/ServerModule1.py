@@ -102,17 +102,27 @@ def add_article_words_api():
   try:
     from datetime import datetime
     metadata = anvil.server.request.body_json
+
+    row = app_tables.word_tb.search(word=metadata.get("word"))
+    if len(row) == 0:
+      app_tables.word_tb.add_row(
+        word_id=metadata.get("word_id"),
+        word=metadata.get("word"),
+        meaning=metadata.get("meaning"),
+        synonyms=metadata.get("synonyms")
+      )
+
+    row = app_tables.word_tb.search(word=metadata.get("word"))
+    if not row or len(row) > 1:
+      return {"status": "error", "message": "Row not found or multiple rows matched"}
+
+    matched_row = row[0]
+    word_id = matched_row['word_id']
+    
     app_tables.article_words.add_row(
       title_id=metadata.get("title_id"),
       level=metadata.get("level"),
-      word_id=metadata.get("word_id"),
-    )
-
-    app_tables.word_tb.add_row(
-      word_id=metadata.get("word_id"),
-      word=metadata.get("word"),
-      meaning=metadata.get("meaning"),
-      synonyms=metadata.get("synonyms")
+      word_id=word_id,
     )
     return {"status": "success", "message": "Word data added successfully!"}
   except Exception as e:
