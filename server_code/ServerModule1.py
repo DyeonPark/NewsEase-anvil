@@ -52,7 +52,7 @@ def add_article_meta_api():
     app_tables.article_meta_tb.add_row(
       title_id=metadata.get("title_id"),
       title=metadata.get("title"),
-      date=datetime.now().date(),
+      date=datetime.now(pytz.timezone("Asia/Seoul")),
       category=metadata.get("category"),
       img_url=metadata.get("img_url"),
       origin_url=metadata.get("origin_url"),
@@ -163,9 +163,11 @@ def add_audio_api(title_id, level):
   
 @anvil.server.http_endpoint("/max_id", methods=['GET'])
 def get_max_id():
-  rows = app_tables.article_tb.search()
-  max_id = max([row['title_id'] for row in rows])
-  return {"max_id": max_id}
+  rows = app_tables.article_meta_tb.search()
+  if len(rows):
+    max_id = max([row['title_id'] for row in rows])
+    return {"max_id": max_id}
+  return {"max_id": -1}
 
 
 @anvil.server.http_endpoint("/existed_word", methods=['POST'])
