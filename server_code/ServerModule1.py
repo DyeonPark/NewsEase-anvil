@@ -44,11 +44,61 @@ def get_article_by_title_n_level(title_id, level):
   return "조건에 맞는 데이터를 찾을 수 없습니다"
 
 
+@anvil.server.http_endpoint("/add_article_meta", methods=["POST"])
+def add_article_meta_api():
+  try:
+    from datetime import datetime
+    metadata = anvil.server.request.body_jso
+    app_tables.article_meta_tb.add_row(
+      title_id=metadata.get("title_id"),
+      title=metadata.get("title"),
+      date=datetime.now().date(),
+      category=metadata.get("category"),
+      img_url=metadata.get("img_url"),
+    )
+    return {"status": "success", "message": "Article added successfully!"}
+  except Exception as e:
+    return {"status": "error", "message": str(e)} 
+
+@anvil.server.http_endpoint("/add_article_level", methods=["POST"])
+def add_article_level_api():
+  try:
+    from datetime import datetime
+    metadata = anvil.server.request.body_jso
+    app_tables.article_meta_tb.add_row(
+      title_id=metadata.get("title_id"),
+      title=metadata.get("title"),
+      date=datetime.now().date(),
+      category=metadata.get("category"),
+      img_url=metadata.get("img_url"),
+    )
+    return {"status": "success", "message": "Article added successfully!"}
+  except Exception as e:
+    return {"status": "error", "message": str(e)} 
+
+
 @anvil.server.http_endpoint("/add_article", methods=["POST"])
 def add_article_api():
   try:
     from datetime import datetime
     metadata = anvil.server.request.body_json
+
+    # save common article meta data
+    app_tables.article_meta_tb.add_row(
+      title_id=metadata.get("title_id"),
+      title=metadata.get("title"),
+      date=datetime.now().date(),
+      category=metadata.get("category"),
+      img_url=metadata.get("img_url"),
+    )
+
+    app_tables.article_level_tb.add_row(
+      title_id=metadata.get("title_id"),
+      article=metadata.get("article"),
+      level=metadata.get("level")
+    )
+
+    app_tables.
 
     app_tables.article_tb.add_row(
       title_id=metadata.get("title_id"),
@@ -66,15 +116,12 @@ def add_article_api():
   except Exception as e:
     return {"status": "error", "message": str(e)}    
 
+
 @anvil.server.http_endpoint("/add_audio", methods=["POST"])
 def add_audio_api(title_id, level):
   try:
     file_data = anvil.server.request.body.get_bytes()
     audio_file = anvil.BlobMedia("audio/mpeg", file_data, name="audio.mp3")
-
-    # query_params = anvil.server.request.query_params
-    # title_id = query_params.get('title_id')
-    # level = query_params.get('level')
 
     row = app_tables.article_tb.search(title_id=int(title_id), level=int(level))
     # 검색된 행이 없거나 여러 개인 경우 처리
@@ -87,12 +134,14 @@ def add_audio_api(title_id, level):
     return {"status": "success", "message": "Audio file updated successfully!"}
   except Exception as e:
     return {"status": "error", "message": str(e)}    
+
   
 @anvil.server.http_endpoint("/max_id", methods=['GET'])
 def get_max_id():
   rows = app_tables.article_tb.search()
   max_id = max([row['title_id'] for row in rows])
   return {"max_id": max_id}
+
 
 @anvil.server.http_endpoint("/daily", methods=['POST'])
 def get_daily_visitors(date: str):
@@ -106,6 +155,7 @@ def get_daily_visitors(date: str):
     return {"count": len(formatted_rows), "logs": formatted_rows}
   except Exception as e:
     return {"error": str(e)}
+
   
 @anvil.server.callable
 def log_visit(path):
