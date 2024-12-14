@@ -55,6 +55,8 @@ def add_article_meta_api():
       date=datetime.now().date(),
       category=metadata.get("category"),
       img_url=metadata.get("img_url"),
+      origin_url=metadata.get("origin_url"),
+      abstract=metadata.get("abstract")
     )
     return {"status": "success", "message": "Article meta data added successfully!"}
   except Exception as e:
@@ -164,6 +166,23 @@ def get_max_id():
   max_id = max([row['title_id'] for row in rows])
   return {"max_id": max_id}
 
+
+@anvil.server.http_endpoint("/existed_word", methods=['POST'])
+def is_existed_word(word: str):
+  rows = app_tables.word_tb.search(word=word)
+  if len(rows):
+    return {"exist": True}
+  return {"exist": False}
+
+
+@anvil.server.http_endpoint("/max_word_id", methods=['GET'])
+def get_max_word_id():
+  rows = app_tables.word_tb.search()
+  if len(rows):
+    max_id = max([row['word_id'] for row in rows])
+    return {"max_word_id": max_id}
+  return {"max_word_id": -1}
+  
 
 @anvil.server.http_endpoint("/daily", methods=['POST'])
 def get_daily_visitors(date: str):

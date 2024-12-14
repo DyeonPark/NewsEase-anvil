@@ -35,6 +35,12 @@ db_schema:
     - admin_ui: {order: 4, width: 200}
       name: img_url
       type: string
+    - admin_ui: {order: 5, width: 200}
+      name: origin_url
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: abstract
+      type: string
     server: full
     title: article_meta_tb
   article_tb:
