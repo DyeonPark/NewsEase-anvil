@@ -48,7 +48,7 @@ def get_article_by_title_n_level(title_id, level):
 def add_article_meta_api():
   try:
     from datetime import datetime
-    metadata = anvil.server.request.body_jso
+    metadata = anvil.server.request.body_json
     app_tables.article_meta_tb.add_row(
       title_id=metadata.get("title_id"),
       title=metadata.get("title"),
@@ -56,23 +56,62 @@ def add_article_meta_api():
       category=metadata.get("category"),
       img_url=metadata.get("img_url"),
     )
-    return {"status": "success", "message": "Article added successfully!"}
+    return {"status": "success", "message": "Article meta data added successfully!"}
   except Exception as e:
     return {"status": "error", "message": str(e)} 
+
 
 @anvil.server.http_endpoint("/add_article_level", methods=["POST"])
 def add_article_level_api():
   try:
     from datetime import datetime
-    metadata = anvil.server.request.body_jso
-    app_tables.article_meta_tb.add_row(
+    metadata = anvil.server.request.body_json
+    app_tables.article_level_tb.add_row(
       title_id=metadata.get("title_id"),
-      title=metadata.get("title"),
-      date=datetime.now().date(),
-      category=metadata.get("category"),
-      img_url=metadata.get("img_url"),
+      article=metadata.get("article"),
+      level=metadata.get("level")
     )
-    return {"status": "success", "message": "Article added successfully!"}
+    return {"status": "success", "message": "Article level data added successfully!"}
+  except Exception as e:
+    return {"status": "error", "message": str(e)} 
+
+
+@anvil.server.http_endpoint("/add_article_audio", methods=["POST"])
+def add_article_audio(title_id, level):
+  try:
+    file_data = anvil.server.request.body.get_bytes()
+    audio_file = anvil.BlobMedia("audio/mpeg", file_data, name="audio.mp3")
+
+    row = app_tables.article_level_tb.search(title_id=int(title_id), level=int(level))
+    # 검색된 행이 없거나 여러 개인 경우 처리
+    if not row or len(row) > 1:
+      return {"status": "error", "message": "Row not found or multiple rows matched"}
+
+    matched_row = row[0]
+    matched_row['tts_audio'] = audio_file
+    
+    return {"status": "success", "message": "Audio file updated successfully!"}
+  except Exception as e:
+    return {"status": "error", "message": str(e)}    
+
+
+@anvil.server.http_endpoint("/add_article_words", methods=["POST"])
+def add_article_words_api():
+  try:
+    from datetime import datetime
+    metadata = anvil.server.request.body_json
+    app_tables.article_words.add_row(
+      title_id=metadata.get("title_id"),
+      word_id=metadata.get("word_id"),
+    )
+
+    app_tables.word_tb.add_row(
+      word_id=metadata.get("word_id"),
+      word=metadata.get("word"),
+      meaning=metadata.get("meaning"),
+      synonyms=metadata.get("synonyms")
+    )
+    return {"status": "success", "message": "Word data added successfully!"}
   except Exception as e:
     return {"status": "error", "message": str(e)} 
 
@@ -82,23 +121,6 @@ def add_article_api():
   try:
     from datetime import datetime
     metadata = anvil.server.request.body_json
-
-    # save common article meta data
-    app_tables.article_meta_tb.add_row(
-      title_id=metadata.get("title_id"),
-      title=metadata.get("title"),
-      date=datetime.now().date(),
-      category=metadata.get("category"),
-      img_url=metadata.get("img_url"),
-    )
-
-    app_tables.article_level_tb.add_row(
-      title_id=metadata.get("title_id"),
-      article=metadata.get("article"),
-      level=metadata.get("level")
-    )
-
-    app_tables.
 
     app_tables.article_tb.add_row(
       title_id=metadata.get("title_id"),
