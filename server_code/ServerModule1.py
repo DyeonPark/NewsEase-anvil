@@ -10,9 +10,9 @@ from datetime import datetime, timedelta
 @anvil.server.callable
 def get_articles_list(cate: str = None):
   if cate:
-    articles = app_tables.article_tb.search(level=1, category=cate)
+    articles = app_tables.article_meta_tb.search(category=cate)
   else:
-    articles = app_tables.article_tb.search(level=1)
+    articles = app_tables.article_meta_tb.search()
   sorted_articles = sorted(articles, key=lambda x: x["date"], reverse=True)
   return sorted_articles
 
