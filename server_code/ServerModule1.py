@@ -18,16 +18,15 @@ def get_articles_list(cate: str = None):
 
 @anvil.server.callable
 def get_article_by_id(title_id):
-  article_row = list(app_tables.article_tb.search(title_id=title_id, level=1))
+  meta_row = list(app_tables.article_tb.search(title_id=title_id, level=1))
 
-  if article_row:
+  if meta_row:
     return {
-      "title": article_row[0]["title"],
-      "article": article_row[0]["article"],
-      "date": article_row[0]["date"],
-      "img_url": article_row[0]["img_url"],
+      "title": meta_row[0]["title"],
+      "date": meta_row[0]["date"],
+      "img_url": meta_row[0]["img_url"],
       "tts_audio": article_row[0]["tts_audio"],
-      "origin_url": article_row[0]["origin_url"]
+      "origin_url": meta_row[0]["origin_url"]
     }
   return "조건에 맞는 데이터를 찾을 수 없습니다"
 

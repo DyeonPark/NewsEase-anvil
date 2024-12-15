@@ -129,10 +129,7 @@ db_schema:
       type: number
     server: full
     title: word_tb
-dependencies:
-- dep_id: dep_wnhx68siqsg53p6
-  resolution_hints: {app_id: LEXDILK32NO6BXRZ, name: Clone of HTTP APIs Quickstart, package_name: HTTPQuickstart}
-  version: {branch: master}
+dependencies: []
 metadata: {description: 'Learn English, catch the news trends', logo_img: 'asset:logo.png', title: 'Learn English, catch the news trends'}
 name: NewsEase
 native_deps:
