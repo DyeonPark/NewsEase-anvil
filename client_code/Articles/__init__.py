@@ -28,7 +28,6 @@ class Articles(ArticlesTemplate):
     if article_data:
       self.article_title.text = article_data["title"]
       self.title_img.source = article_data["img_url"]
-      self.audio_player.src = article_data["tts_audio"].get_url(True)
     else:
       print(f"해당 기사를 찾을 수 없습니다: id is {title_id}")
 
@@ -40,7 +39,6 @@ class Articles(ArticlesTemplate):
     
     article_data = anvil.server.call('get_article_by_title_n_level', title_id=self.title_id, level=1)
     self.article_context.content = article_data["article"]
-    self.title_img.source = article_data["img_url"]
     self.call_js('setAudioSource', article_data["tts_audio"].get_url(True))
 
   
@@ -51,7 +49,6 @@ class Articles(ArticlesTemplate):
     
     article_data = anvil.server.call('get_article_by_title_n_level', title_id=self.title_id, level=2)
     self.article_context.content = article_data["article"]
-    self.title_img.source = article_data["img_url"]
     self.call_js('setAudioSource', article_data["tts_audio"].get_url(True))
 
   
@@ -62,7 +59,6 @@ class Articles(ArticlesTemplate):
     
     article_data = anvil.server.call('get_article_by_title_n_level', title_id=self.title_id, level=3)
     self.article_context.content = article_data["article"]
-    self.title_img.source = article_data["img_url"]
     self.call_js('setAudioSource', article_data["tts_audio"].get_url(True))
 
   def title_link_click(self, **event_args):
