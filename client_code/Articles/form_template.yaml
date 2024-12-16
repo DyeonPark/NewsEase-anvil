@@ -85,6 +85,14 @@ components:
         padding: [11, null, 0, null]
       spacing_above: small
     type: RichText
+  - layout_properties: {grid_position: 'GTXMLG,UPNQXW'}
+    name: spacer_1
+    properties: {height: 54.22265625}
+    type: Spacer
+  - layout_properties: {grid_position: 'ESRAIO,GUSXUO'}
+    name: word_panel
+    properties: {item_template: Articles.ItemTemplate3}
+    type: RepeatingPanel
   - layout_properties: {grid_position: 'JLHMNI,MVCFFN'}
     name: ad_block_2
     properties: {}
