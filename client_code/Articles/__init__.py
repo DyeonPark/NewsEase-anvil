@@ -40,6 +40,9 @@ class Articles(ArticlesTemplate):
     article_data = anvil.server.call('get_article_by_title_n_level', title_id=self.title_id, level=1)
     self.article_context.content = article_data["article"]
     self.call_js('setAudioSource', article_data["tts_audio"].get_url(True))
+    
+    words = anvil.server.call("get_word_list", title_id=self.title_id, level=1)
+    self.word_panel.items = words
 
   
   def link_2_click(self, **event_args):
