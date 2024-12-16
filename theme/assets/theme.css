@@ -739,6 +739,10 @@ button.close > span, button.close {
   padding: 15px;
 }
 
+.anvil-role-article-word {
+  color: #6750A4;
+}
+
 .anvil-role-elevated-card {
   overflow: hidden;
   border-radius: 12px;

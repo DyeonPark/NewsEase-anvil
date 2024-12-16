@@ -54,6 +54,9 @@ class Articles(ArticlesTemplate):
     self.article_context.content = article_data["article"]
     self.call_js('setAudioSource', article_data["tts_audio"].get_url(True))
 
+    words = anvil.server.call("get_word_list", title_id=self.title_id, level=2)
+    self.word_panel.items = words
+
   
   def link_3_click(self, **event_args):
     self.level1.background = "white"
@@ -63,6 +66,9 @@ class Articles(ArticlesTemplate):
     article_data = anvil.server.call('get_article_by_title_n_level', title_id=self.title_id, level=3)
     self.article_context.content = article_data["article"]
     self.call_js('setAudioSource', article_data["tts_audio"].get_url(True))
+
+    words = anvil.server.call("get_word_list", title_id=self.title_id, level=3)
+    self.word_panel.items = words
 
   def title_link_click(self, **event_args):
     open_form('Home')

@@ -86,12 +86,16 @@ components:
       spacing_above: small
     type: RichText
   - layout_properties: {grid_position: 'GTXMLG,UPNQXW'}
-    name: spacer_1
-    properties: {height: 54.22265625}
+    name: spacer_word
+    properties: {height: 35.6640625}
     type: Spacer
+  - layout_properties: {grid_position: 'NQXRQH,XZHINJ'}
+    name: context_intro_copy
+    properties: {bold: false, font_size: 20, text: 3️⃣ Check key words in this article}
+    type: Label
   - layout_properties: {grid_position: 'ESRAIO,GUSXUO'}
     name: word_panel
-    properties: {item_template: word_card}
+    properties: {background: '#f1f3f4', item_template: word_card}
     type: RepeatingPanel
   - layout_properties: {grid_position: 'JLHMNI,MVCFFN'}
     name: ad_block_2

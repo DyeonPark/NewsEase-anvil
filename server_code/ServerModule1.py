@@ -19,16 +19,14 @@ def get_articles_list(cate: str = None):
 @anvil.server.callable
 def get_word_list(title_id: int, level: int):
   response = app_tables.article_words.search(title_id=title_id, level=level)
-  word_ids = response["words"]
-  words = [{'word_id': row['word_id'], 'word_text': row['word_text']} for row in rows]
+  word_ids = [row['word_id'] for row in response]
 
   items = []
   for id in word_ids:
-    row = app_tables.word_tb.search(word_id=id)
-    items.appned({"word": row[0]["word"], "meaning": , row[0][""]})
-  words = app_tables.word_tb.search(word_id=q.any_of(*word_ids))
-  sorted_words = sorted(words, key=lambda x: x["word"], reverse=True)
-  return sorted_words
+    row = app_tables.word_tb.get(word_id=id)
+    items.append({"word": row["word"], "meaning": row["meaning"], "synonyms": row["synonyms"]})
+  sorted_items = sorted(items, key=lambda x: x["word"], reverse=True)
+  return sorted_items
 
 @anvil.server.callable
 def get_article_by_id(title_id):

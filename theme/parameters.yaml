@@ -332,3 +332,4 @@ roles:
 - components: [TextBox, TextArea, DatePicker, DropDown]
   name: input-error
 - {name: level-button}
+- {name: article-word}

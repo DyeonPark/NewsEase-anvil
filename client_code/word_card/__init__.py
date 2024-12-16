@@ -13,6 +13,6 @@ class word_card(word_cardTemplate):
 
     self.word.text = self.item["word"]
     self.word_meaning.text = self.item["meaning"]
-    self.word_meaning.text = self.item["synonyms"]
+    self.word_synonyms.text = self.item["synonyms"]
     
     # self.cd_link.set_event_handler('click', self.card_click)
