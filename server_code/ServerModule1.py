@@ -17,6 +17,14 @@ def get_articles_list(cate: str = None):
   return sorted_articles
 
 @anvil.server.callable
+def get_word_list(title_id: int, level: int):
+  response = app_tables.article_words.search(title_id=title_id, level=level)
+  word_ids = response["words"]
+  words = app_tables.word_tb.search(word_id=word_ids)
+  sorted_words = sorted(words, key=lambda x: x["word"], reverse=True)
+  return sorted_words
+
+@anvil.server.callable
 def get_article_by_id(title_id):
   meta_row = list(app_tables.article_meta_tb.search(title_id=title_id))
   if meta_row:
