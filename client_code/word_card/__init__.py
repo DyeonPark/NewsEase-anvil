@@ -11,11 +11,8 @@ class word_card(word_cardTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
-    self.cd_title.content = self.item["title"]
-    self.cd_txt.content = self.item["abstract"]
-    self.card_img.source = self.item["img_url"]
-
-    self.word.
+    self.word.text = self.item["word"]
+    self.word_meaning.text = self.item["meaning"]
+    self.word_meaning.text = self.item["synonyms"]
     
-    self.cd_link.set_event_handler('click', self.card_click)
+    # self.cd_link.set_event_handler('click', self.card_click)
