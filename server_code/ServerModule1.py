@@ -36,7 +36,6 @@ def get_article_by_id(title_id):
       "title": meta_row[0]["title"],
       "date": meta_row[0]["date"],
       "img_url": meta_row[0]["img_url"],
-      "origin_url": meta_row[0]["origin_url"]
     }
   return "조건에 맞는 데이터를 찾을 수 없습니다"
 
